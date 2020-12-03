@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+
+    <script src="js/collider-check.js"></script>
+
+    <!--libreria de componentes-->
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+
+    <script src="js/info-message.js"></script>
+    <script src="js/highlight.js"></script>
+    <script src="js/info-panel.js"></script>
+</head>
+<body>
+    <!---->
+    <a-scene info-message="htmlSrc: #messageText">
+        <a-assets>
+            <a-asset-item id="tree" src="/gltf/hangar/hangar.gltf"></a-asset-item>
+            
+        </a-assets>
+        <!--modelo 3d-->
+        <a-entity gltf-model="#tree"></a-entity>
+        <!--cuadro de mensaje-->
+        <a-asset-item id="messageText" src="message.html"></a-asset-item>
+
+        <a-entity id="player" collider-check>
+            <a-entity raycaster="objects: .gltf" position="0 -0.9 0" rotation="90 0 0"></a-entity>
+        </a-entity>
+        <!---->
+        <a-entity class="gltf" geometry="primitive: box" position="1 0 0"></a-entity>
+   
+        
+
+    </a-scene>
+    
+    
+</body>
+</html>
