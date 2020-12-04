@@ -15,11 +15,54 @@
     <script src="js/info-message.js"></script>
     <script src="js/highlight.js"></script>
     <script src="js/info-panel.js"></script>
+
+    <!--libreria font awsome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+
+    <!--botones de mando up, left, right, down-->
+    <div id="up" class="button-up">
+        <i class="fas fa-chevron-circle-up"></i>
+    </div>
+    <div id="left" class="button-left">
+        <i class="fas fa-chevron-circle-left"></i>
+    </div>
+    <div id="down" class="button-down">
+        <i class="fas fa-chevron-circle-down"></i>
+    </div>
+    <div id="right" class="button-right">
+        <i class="fas fa-chevron-circle-right"></i>
+    </div>
+
+    <script>
+        AFRAME.registerComponent('user-control',{
+            init : function () {
+                let up = document.querySelector("#up");
+                let down = document.querySelector("down");
+
+                up.addEventListener('click', function(ev) {
+                    console.log(`%cUP`, 'font-size:2em;');
+                    let cam = document.querySelector("#cam");
+                    let position = cam.getAttribute('position');
+
+                    
+
+                    position.z -= 1;
+                    cam.setAttribute('position', position);
+                }); 
+            }
+        });
+    </script>
+
     
     <!---->
-    <a-scene info-message="htmlSrc: #messageText">
+    <a-scene user-control info-message="htmlSrc: #messageText">
+        <a-entity id="cam" camera look-controls ></a-entity>
+        <!--<a-camara></a-camera>-->
+        
         <a-assets>
             <!--Modelo 3D-->
             <a-asset-item id="tree" src="https://cdn.glitch.com/63a6bc1d-ae82-4987-a511-4d8685401ffd%2FGallery_J-V2.glb?v=1607014806030"></a-asset-item>

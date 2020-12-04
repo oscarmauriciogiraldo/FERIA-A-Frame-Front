@@ -1,0 +1,63 @@
+.button-up{
+    width: 60px;
+    height: 60px;
+    background: rgba(53, 78, 95, 0.657);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 50%;
+    font-size: 30px;
+    position: absolute;
+    z-index: 2;
+    bottom: 115px;
+    left: 100px;
+}
+
+.button-left{
+    width: 60px;
+    height: 60px;
+    background: rgba(53, 78, 95, 0.657);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 50%;
+    font-size: 30px;
+    position: absolute;
+    z-index: 2;
+    bottom: 50px;
+    left: 35px;
+}
+
+.button-down{
+    width: 60px;
+    height: 60px;
+    background: rgba(53, 78, 95, 0.657);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 50%;
+    font-size: 30px;
+    position: absolute;
+    z-index: 2;
+    bottom: 50px;
+    left: 100px;
+}
+
+.button-right{
+    width: 60px;
+    height: 60px;
+    background: rgba(53, 78, 95, 0.657);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 50%;
+    font-size: 30px;
+    position: absolute;
+    z-index: 2;
+    bottom: 50px;
+    left: 165px;
+}
