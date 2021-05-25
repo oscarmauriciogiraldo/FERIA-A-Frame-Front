@@ -3,26 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gala-Virtual</title>
 
+    <!--||||||||||||Estilos CSS3||||||||||||||||-->
+    <!--libreria font awsome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <link rel="stylesheet" href="css/style.css">
+    <!--||||||||||||Estilos CSS3||||||||||||||||-->
+
+    <!--||||||||||||||* LIbreria A-Frame *|||||||||-->
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 
+    <!--||||||||* libreria de componentes *|||||||||-->
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+
+    <!--||||||||* libreria de Extras para colision *|||||||||-->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+    <!--|||||||||||||* *********** *|||||||||||||||||-->
+    <!--|||||||||||||* Componentes *|||||||||||||||||-->
     <script src="js/collider-check.js"></script>
 
-    <!--libreria de componentes-->
-    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
 
     <script src="js/info-message.js"></script>
     <script src="js/highlight.js"></script>
     <script src="js/info-panel.js"></script>
+    <!--|||||||||||||* Componentes *|||||||||||||||||-->
+    <!--|||||||||||||* *********** *|||||||||||||||||-->
 
-    <!--libreria font awsome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
-    <link rel="stylesheet" href="css/style.css">
+    
 </head>
 <body>
 
-
+    
+    <!--|||||||||||||* *********** *|||||||||||||||||-->
     <!--botones de mando up, left, right, down-->
     <div id="up" class="button-up">
         <i class="fas fa-chevron-circle-up"></i>
@@ -36,121 +50,22 @@
     <div id="right" class="button-right">
         <i class="fas fa-chevron-circle-right"></i>
     </div>
+    <!--|||||||||||||* *********** *|||||||||||||||||-->
 
-    <script>
-        AFRAME.registerComponent('user-control',{
-            init : function () {
-                let up = document.querySelector("#up");
-                let down = document.querySelector("down");
-
-                up.addEventListener('click', function(ev) {
-                    console.log(`%cUP`, 'font-size:2em;');
-                    let cam = document.querySelector("#cam");
-                    let position = cam.getAttribute('position');
-
-                    
-
-                    position.z -= 1;
-                    cam.setAttribute('position', position);
-                }); 
-            }
-        });
-    </script>
+    <a-scene>
+        
+        <!--<a-light type="ambient"></a-light>
+        <a-light type="point" position="0 -1.8 -3" intensity=1></a-light>
+        <a-light type="point" position="0.19671 -0.99187 13.26452" intensity="1" light="intensity: 2.15" rotation=""></a-light>
+        <a-light type="point" position="0.29619 3.94828 4.84272" intensity="1" light="intensity: 2.15"></a-light>-->
+        <a-gltf-model src="https://cdn.glitch.com/63a6bc1d-ae82-4987-a511-4d8685401ffd%2FGallery_J-V2.glb?v=1607014806030"></a-gltf-model>
+        
+    </a-scene>
 
     
-    <!---->
-    <a-scene user-control info-message="htmlSrc: #messageText">
-        <a-entity id="cam" camera look-controls ></a-entity>
-        <!--<a-camara></a-camera>-->
-        
-        <a-assets>
-            <!--Modelo 3D-->
-            <a-asset-item id="tree" src="https://cdn.glitch.com/63a6bc1d-ae82-4987-a511-4d8685401ffd%2FGallery_J-V2.glb?v=1607014806030"></a-asset-item>
-        
-        </a-assets>
-        <!--modelo 3d-->
-        <a-entity gltf-model="#tree"></a-entity>
-        <!--cuadro de mensaje-->
-        <a-asset-item id="messageText" src="message.html"></a-asset-item>
-        <!--cuadro de mensaje-->
 
-        <a-entity id="player" collider-check>
-            <a-entity raycaster="objects: a-box" position="0 -0.9 0" rotation="90 0 0"></a-entity>
-        </a-entity>
-        <!---->
-        <a-entity class="gltf" geometry="primitive: box" position="1 0 0"></a-entity>
-
-        <a-box position="-1 0.5 -3" rotation="4 0 0" color="#4CC3D9" class="raycastable"></a-box>
-
-        <!--****************************************************-->
-        <!--
-        <a-entity
-        id="background"
-        position="0 0 0"
-        geometry="primitive: sphere; radius: 2.0"
-        material="color: red; side: back; shader: flat"
-        scale="0.001 0.001 0.001"
-        visible="false" class="raycastable">
-      </a-entity>
-
-      <a-entity
-        position="0 1.6 0"
-        camera look-controls="magicWindowTrackingEnabled: false; touchEnabled: false; mouseEnabled: false">
-        <a-entity
-          id="fadeBackground"
-          geometry="primitive: sphere; radius: 2.5"
-          material="color: black; side: back; shader: flat; transparent: true; opacity: 0.6" visible="false">
-        </a-entity>
-      </a-entity>
-      -->
-
-
-       
-        <!--cartas para darle click-->
-        <!--
-        <a-entity id="ui" position="0 1.6 -2.5">-->
-        <!-- Poster menu -->
-        <!--
-        <a-entity id="menu" highlight>
-          <a-entity id="karigurashiButton" position="-0.8 0 0" mixin="frame" class="raycastable menu-button">
-            <a-entity material="src: #karigurashiPoster;" mixin="poster"></a-entity>
-          </a-entity>
-
-          <a-entity id="kazetachinuButton" position="0 0 0" mixin="frame" class="raycastable menu-button">
-            <a-entity material="src: #kazetachinuPoster" mixin="poster"></a-entity>
-          </a-entity>
-
-          <a-entity id="ponyoButton" position="0.8 0 0" mixin="frame" class="raycastable menu-button">
-            <a-entity material="src: #ponyoPoster" mixin="poster"></a-entity>
-          </a-entity>
-        </a-entity>
-        -->
-        <!-- Info panel of the selected movie. -->
-        <!-- modales al darle click -->
-        <!--
-        <a-entity
-          id="infoPanel"
-          position="0 0 0.5"
-          info-panel
-          visible="false"
-          scale="0.001 0.001 0.001"
-          geometry="primitive: plane; width: 1.5; height: 1.8"
-          material="color: #333333; shader: flat; transparent: false" class="raycastable">
-          <a-entity id="ponyoMovieImage" mixin="movieImage" material="src: #ponyo" visible="false"></a-entity>
-          <a-entity id="kazetachinuMovieImage" mixin="movieImage" material="src: #kazetachinu" visible="false"></a-entity>
-          <a-entity id="karigurashiMovieImage" mixin="movieImage" material="src: #karigurashi" visible="false"></a-entity>
-          <a-entity id="movieTitle"
-            position="-0.68 -0.1 0"
-            text="shader: msdf; anchor: left; width: 1.5; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Ponyo (2003)"></a-entity>
-          <a-entity id="movieDescription"
-            position="-0.68 -0.2 0"
-            text="baseline: top; shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></a-entity>
-        </a-entity>
-
-        </a-entity>
-        -->
-
-    </a-scene>
+    
+   
     
 </body>
 </html>
